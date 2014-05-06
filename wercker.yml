@@ -20,6 +20,9 @@ build:
                 mv build/Framer.zip $WERCKER_OUTPUT_DIR
 deploy:
     steps:
+        - script:
+            name: apt-get update
+            code: sudo apt-get update
         - github-create-release:
             token: $GITHUB_TOKEN
             tag_name: v4.0.0
