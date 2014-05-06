@@ -1,16 +1,25 @@
 box: wercker/nodejs
 # Build definition
 build:
-  # The steps that will be executed on build
-  steps:
-    # A step that executes `npm install` command
-    - npm-install
-    # A step that executes `npm test` command
-    - npm-test
+    # The steps that will be executed on build
+    steps:
+        # A step that executes `npm install` command
+        - npm-install
+        # A step that executes `npm test` command
+        - npm-test
 
-    # A custom script step, name value is used in the UI
-    # and the code value contains the command that get executed
-    - script:
-        name: make
-        code: |
-          make build
+        # A custom script step, name value is used in the UI
+        # and the code value contains the command that get executed
+        - script:
+            name: build
+            code: |
+                make dist
+                mv Framer.zip $WERCKER_OUTPUT_DIR
+deploy:
+    steps:
+        - github-create-release:
+            token: $GITHUB_TOKEN
+            tag_name: v4.0.0
+        - github-upload-asset:
+            token: $GITHUB_TOKEN
+            file: Framer.zip
