@@ -17,7 +17,7 @@ build:
             name: build
             code: |
                 make dist
-                mv Framer.zip $WERCKER_OUTPUT_DIR
+                mv build/Framer.zip $WERCKER_OUTPUT_DIR
 deploy:
     steps:
         - github-create-release:
