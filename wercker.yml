@@ -18,9 +18,12 @@ build:
                 mv build/Framer.zip $WERCKER_OUTPUT_DIR
 deploy:
     steps:
+        - script:
+            name: retrieve git tag
+            code: export RETRIEVED_GIT_TAG="v5.0.0"
         - github-create-release:
             token: $GITHUB_TOKEN
-            tag_name: $GITHUB_RELEASE_VERSION
+            tag_name: $RETRIEVED_GIT_TAG
         - github-upload-asset:
             token: $GITHUB_TOKEN
             file: Framer.zip
