@@ -21,10 +21,9 @@ deploy:
         - github-create-release:
             token: $GITHUB_TOKEN
             tag: $GITHUB_RELEASE_VERSION
+            title: Framer $GITHUB_RELEASE_VERSION
             draft: true
-            prerelease: true
-            title: This is a name
-            body: This is a long description...
         - github-upload-asset:
             token: $GITHUB_TOKEN
             file: Framer.zip
+            filename: framer-$GITHUB_RELEASE_VERSION.zip
