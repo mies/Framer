@@ -23,7 +23,7 @@ deploy:
             tag: $GITHUB_RELEASE_VERSION
             draft: true
             prerelease: true
-            name: This is a name
+            title: This is a name
             body: This is a long description...
         - github-upload-asset:
             token: $GITHUB_TOKEN
