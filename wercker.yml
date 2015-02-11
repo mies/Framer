@@ -1,4 +1,4 @@
-box: box: nodesource/node:trusty
+box: nodesource/node:trusty
 # Build definition
 build:
   # The steps that will be executed on build
