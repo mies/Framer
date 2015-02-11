@@ -1,4 +1,4 @@
-box: wercker/nodejs
+box: box: nodesource/node:trusty
 # Build definition
 build:
   # The steps that will be executed on build
@@ -8,14 +8,11 @@ build:
     # A step that executes `npm test` command
     - npm-test
 
-    # Make tests
-    - script:
-        name: make test
-        code: |
-          make test
+deploy:
+    steps:
+        - install-packages:
+            packages: zip
+        - script:
+            name: builds.framerjs.com
+            code: make deploy
 
-    # Make build
-    - script:
-        name: make build
-        code: |
-          make build

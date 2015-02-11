@@ -4,3 +4,8 @@ test/init.js
 test/lib/framer.js
 *.swp
 build/template
+build
+lib
+.build
+.deploy
+*.pyc
